@@ -4,8 +4,9 @@ import { Inter } from '@next/font/google'
 
 import { Canvas } from '@react-three/fiber'
 import { Suspense } from 'react'
+import { motion as m } from 'framer-motion'
 
-import Inside from '../components/experience/Inside'
+import Help from '../components/experience/Help'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -19,13 +20,18 @@ export default function Home() {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            <main>
-                <Canvas shadows>
+            <m.main
+                initial={{opacity: 0}}
+                animate={{opacity: 1}}
+                exit={{opacity: 0}}
+                transition={{duration: 1.25, ease: 'easeOut', delay: 0.25}}
+            >
+                <Canvas>
                     <Suspense fallback={null}>
-                        <Inside />
+                        <Help />
                     </Suspense>
                 </Canvas>
-            </main>
+            </m.main>
         </>
     )
 }

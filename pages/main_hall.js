@@ -6,12 +6,11 @@ import { Canvas } from '@react-three/fiber'
 import { Suspense } from 'react'
 import { motion as m } from 'framer-motion'
 
-import Outside from '../components/experience/Outside'
 import Inside from '../components/experience/Inside'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function Home() {
+export default function Main_Hall() {
     return (
         <>
             <Head>
@@ -25,11 +24,11 @@ export default function Home() {
                 initial={{opacity: 0}}
                 animate={{opacity: 1}}
                 exit={{opacity: 0}}
-                transition={{duration: 1.25, ease: 'easeOut', delay: 0.25}}
+                transition={{duration: 1.25, ease: 'easeOut', delay: 0.75}}
             >
                 <Canvas>
                     <Suspense fallback={null}>
-                        <Outside />
+                        <Inside />
                     </Suspense>
                 </Canvas>
             </m.main>

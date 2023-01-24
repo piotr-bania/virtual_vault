@@ -4,7 +4,7 @@ import { OrbitControls, Text, Float } from '@react-three/drei'
 import { TextureLoader } from 'three/src/loaders/TextureLoader'
 import { useControls } from 'leva'
 
-const Outside = () => {
+const Inside = () => {
 
     const cubeRef = useRef()
 
@@ -35,21 +35,21 @@ const Outside = () => {
                     maxWidth={5}
                     textAlign={'center'}
                     lineHeight={1}>
-                    Use top menu to start the experience
+                    This is a Help section
                 </Text>
             </Float>
 
             <mesh position-y={-1} rotation-x={-Math.PI * 0.5} scale={5} >
                 <planeGeometry />
-                <meshStandardMaterial color={0x7161F5}/>
+                <meshStandardMaterial color={0x62B8F5}/>
             </mesh>
 
-            <mesh ref={cubeRef} position={[0, 1, -1]} >
-                <boxGeometry />
-                <meshStandardMaterial color={0x62F5E6} />
+            <mesh ref={cubeRef} position={[0, 1, -3]} scale={0.65} >
+                <torusKnotGeometry />
+                <meshStandardMaterial color={0x857BDA} />
             </mesh>
         </>
     )
 }
 
-export default Outside
+export default Inside

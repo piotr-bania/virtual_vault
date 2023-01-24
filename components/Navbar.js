@@ -5,8 +5,10 @@ const Navbar = () => {
     return (
         <div className='navbar'>
             <li>
-                <Link href="/">Outside</Link>
-                <Link href="/inside">Inside</Link>
+                <Link href="/">Go back outside</Link>
+                <Link className='blink' href="/main_hall">Enter the Museum</Link>
+                <Link href="/marketplace">Marketplace</Link>
+                <Link href="/help">Help</Link>
             </li>
         </div>
     )

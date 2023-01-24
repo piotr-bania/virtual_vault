@@ -6,8 +6,7 @@ import { Canvas } from '@react-three/fiber'
 import { Suspense } from 'react'
 import { motion as m } from 'framer-motion'
 
-import Outside from '../components/experience/Outside'
-import Inside from '../components/experience/Inside'
+import Marketplace from '../components/experience/Marketplace'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -29,7 +28,7 @@ export default function Home() {
             >
                 <Canvas>
                     <Suspense fallback={null}>
-                        <Outside />
+                        <Marketplace />
                     </Suspense>
                 </Canvas>
             </m.main>

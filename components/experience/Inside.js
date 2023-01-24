@@ -30,11 +30,12 @@ const Inside = () => {
             <Float speed={3}>
                 <Text
                     font='/fonts/GrandSlang-Roman.woff'
+                    fontSize={0.5}
                     color={0x0E065C}
-                    maxWidth={10}
+                    maxWidth={5}
                     textAlign={'center'}
                     lineHeight={1}>
-                    You are now inside the Museum
+                    You are now inside of the Museum
                 </Text>
             </Float>
 
@@ -43,7 +44,7 @@ const Inside = () => {
                 <meshStandardMaterial color={0xF57061}/>
             </mesh>
 
-            <mesh ref={cubeRef} position={[0, 1, -3]} >
+            <mesh ref={cubeRef} position={[0, 1, -1]} scale={0.5}>
                 <torusGeometry />
                 <meshStandardMaterial color={0xE6F561} />
             </mesh>
