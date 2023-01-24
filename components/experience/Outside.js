@@ -1,19 +1,24 @@
 import { useRef } from 'react'
 import { useFrame, useLoader } from '@react-three/fiber'
 import { OrbitControls, Text, Float } from '@react-three/drei'
-import { TextureLoader } from 'three/src/loaders/TextureLoader'
 import { useControls } from 'leva'
+import { TextureLoader } from 'three/src/loaders/TextureLoader'
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
+import { Fog } from 'three'
 
 const Outside = () => {
 
-    const cubeRef = useRef()
+    const modelRef = useRef()
 
     useFrame((state, delta) =>
         {
-            cubeRef.current.rotation.y += 0.01,
-            cubeRef.current.rotation.z += 0.005
+            modelRef.current.rotation.y -= 0.002,
+            modelRef.current.rotation.z += 0.001
         }
     )
+
+    const model = useLoader(GLTFLoader, './outside/planet/planet.gltf')
+    console.log(model)
 
     return (
         <>
@@ -25,7 +30,8 @@ const Outside = () => {
             />
 
             <ambientLight intensity={0.05} color={0xFFFFFF} />
-            <pointLight castShadow position={[1, 1, 1]} color={0xF5F4FE} intensity={1} />
+            <pointLight castShadow position={[-1, .5, 1]} color={0xF8C8FA} intensity={0.25} />
+            <pointLight castShadow position={[-.25, 1.75, -.75]} color={0xFFFFFF} intensity={0.75} />
 
             <Float speed={3}>
                 <Text
@@ -44,10 +50,7 @@ const Outside = () => {
                 <meshStandardMaterial color={0x7161F5}/>
             </mesh>
 
-            <mesh ref={cubeRef} position={[0, 1, -1]} >
-                <boxGeometry />
-                <meshStandardMaterial color={0x62F5E6} />
-            </mesh>
+            <primitive object={model.scene} ref={modelRef} position={[-1, 1, -1]} />
         </>
     )
 }

@@ -7,7 +7,6 @@ import { Suspense } from 'react'
 import { motion as m } from 'framer-motion'
 
 import Outside from '../components/experience/Outside'
-import Inside from '../components/experience/Inside'
 
 const inter = Inter({ subsets: ['latin'] })
 
