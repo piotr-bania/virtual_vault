@@ -35,7 +35,7 @@ const Inside = () => {
                     maxWidth={5}
                     textAlign={'center'}
                     lineHeight={1}>
-                    You can buyuy and sell NFT here
+                    You can buy and sell NFT here
                 </Text>
             </Float>
 
