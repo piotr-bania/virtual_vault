@@ -4,7 +4,7 @@ import { OrbitControls, Text, Float } from '@react-three/drei'
 import { TextureLoader } from 'three/src/loaders/TextureLoader'
 import { useControls } from 'leva'
 
-const Outside = () => {
+const Inside = () => {
 
     const cubeRef = useRef()
 
@@ -31,24 +31,24 @@ const Outside = () => {
                 <Text
                     font='/fonts/GrandSlang-Roman.woff'
                     color={0x0E065C}
-                    maxWidth={8}
+                    maxWidth={10}
                     textAlign={'center'}
                     lineHeight={1}>
-                    This is outside of the Museum
+                    You are now inside the Museum
                 </Text>
             </Float>
 
             <mesh position-y={-1} rotation-x={-Math.PI * 0.5} scale={5} >
                 <planeGeometry />
-                <meshStandardMaterial color={0x7161F5}/>
+                <meshStandardMaterial color={0xF57061}/>
             </mesh>
 
-            <mesh ref={cubeRef} position={[0, 1, -1]} >
-                <boxGeometry />
-                <meshStandardMaterial color={0x62F5E6} />
+            <mesh ref={cubeRef} position={[0, 1, -3]} >
+                <torusGeometry />
+                <meshStandardMaterial color={0xE6F561} />
             </mesh>
         </>
     )
 }
 
-export default Outside
+export default Inside

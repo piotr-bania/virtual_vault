@@ -1,8 +1,14 @@
 import React from 'react'
+import Link from 'next/link'
 
 const Navbar = () => {
     return (
-        <div>Navbar</div>
+        <div className='navbar'>
+            <li>
+                <Link href="/">Outside</Link>
+                <Link href="/inside">Inside</Link>
+            </li>
+        </div>
     )
 }
 

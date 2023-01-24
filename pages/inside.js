@@ -5,7 +5,6 @@ import { Inter } from '@next/font/google'
 import { Canvas } from '@react-three/fiber'
 import { Suspense } from 'react'
 
-import Outside from '../components/experience/Outside'
 import Inside from '../components/experience/Inside'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -23,7 +22,7 @@ export default function Home() {
             <main>
                 <Canvas shadows>
                     <Suspense fallback={null}>
-                        <Outside />
+                        <Inside />
                     </Suspense>
                 </Canvas>
             </main>
