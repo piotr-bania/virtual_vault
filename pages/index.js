@@ -1,14 +1,15 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from '@next/font/google'
+const inter = Inter({ subsets: ['latin'] })
+
+import { motion as m } from 'framer-motion'
 
 import { Canvas } from '@react-three/fiber'
 import { Suspense } from 'react'
-import { motion as m } from 'framer-motion'
+import { Fog } from 'three'
 
 import Outside from '../components/experience/Outside'
-
-const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
     return (
@@ -26,7 +27,12 @@ export default function Home() {
                 exit={{opacity: 0}}
                 transition={{duration: 1.25, ease: 'easeOut', delay: 0.25}}
             >
-                <Canvas>
+                <Canvas
+                    onCreated={(state) => {
+                        state.gl.setClearColor('#192933')
+                        state.scene.fog = new Fog('#a282b0', 1, 25)
+                    }}
+                >
                     <Suspense fallback={null}>
                         <Outside />
                     </Suspense>
