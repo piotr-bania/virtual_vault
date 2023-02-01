@@ -2,30 +2,22 @@ import { useRef } from 'react'
 import { useFrame, useLoader } from '@react-three/fiber'
 import { OrbitControls, Text, Float, useTexture } from '@react-three/drei'
 import { useControls } from 'leva'
-import { TextureLoader } from 'three/src/loaders/TextureLoader'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
+import { TextureLoader } from 'three'
 
 const Outside = () => {
 
-    const modelRef = useRef()
+    const planetRef = useRef()
 
     // useFrame((state, delta) =>
     //     {
-    //         modelRef.current.rotation.y -= 0.002,
-    //         modelRef.current.rotation.z += 0.001
+    //         modeplanetReflRef.current.rotation.y -= 0.002,
+    //         planetRef.current.rotation.z += 0.001
     //     }
     // )
-
-    const model = useLoader(GLTFLoader, './outside/planet/planet.gltf')
     
-    const planet = useLoader(GLTFLoader, './outside/test/planet.gltf')
-    const planet_texture = useLoader(TextureLoader, '/outside/test/planet.jpg')
-    
-    const museum = useLoader(GLTFLoader, './outside/test/museum.gltf')
-    const museum_texture = useLoader(TextureLoader, '/outside/test/museum.jpg')
-    
-    const ground = useLoader(GLTFLoader, './outside/test/ground.gltf')
-    const ground_texture = useLoader(TextureLoader, '/outside/test/ground.jpg')
+    const planet = useLoader(GLTFLoader, 'outside/planet/planet.gltf')
+    const planet_color = useLoader(TextureLoader, 'outside/planet/planet_color.jpg')
 
     return (
         <>
@@ -36,9 +28,9 @@ const Outside = () => {
                 maxPolarAngle={Math.PI - Math.PI / 2.15}
             />
 
-            <ambientLight intensity={0.5} color={'#3A4257'} />
-            <pointLight castShadow position={[0, 0, -50]} color={'#00ff00'} intensity={0.25} />
-            <pointLight castShadow position={[-3, 0, 5]} color={'#ff0000'} intensity={0.25} />
+            <ambientLight intensity={0.05} color={'#3A4257'} />
+            <pointLight castShadow position={[0, 0, -50]} color={'#ffffff'} intensity={0.05} />
+            <pointLight castShadow position={[-3, 0, 5]} color={'#ffffff'} intensity={0.05} />
 
             <Float speed={3}>
                 <Text
@@ -52,36 +44,9 @@ const Outside = () => {
                 </Text>
             </Float>
 
-            {/* <mesh position-y={-1} rotation-x={-Math.PI * 0.5} scale={5} >
-                <planeGeometry />
-                <meshStandardMaterial color={0x7161F5}/>
-            </mesh> */}
-
-            <primitive object={model.scene} ref={modelRef} position={[-1, 1, -1]} />
-
-            {/* <mesh position={[0, 0, -3]} >
-                <sphereGeometry />
-                <meshStandardMaterial color={'#11ff00'}/>
-            </mesh> */}
-            
-            {/* <mesh position={[1, 3, -5]} >
-                <sphereGeometry />
-                <meshStandardMaterial color={'#ff0011'}/>
-            </mesh> */}
-
-            <mesh position={[0, -1, -5]}>
+            <mesh ref={planetRef}>
                 <primitive object={planet.scene} />
-                <meshStandardMaterial map={planet_texture} />
-            </mesh>
-
-            <mesh position={[0, -1, -5]}>
-                <primitive object={museum.scene} />
-                <meshStandardMaterial map={museum_texture} />
-            </mesh>
-
-            <mesh position={[0, -1, -5]}>
-                <primitive object={ground.scene} />
-                <meshLambertMaterial map={ground_texture} />
+                <meshStandardMaterial map={planet_color} />
             </mesh>
         </>
     )

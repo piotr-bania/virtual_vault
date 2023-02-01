@@ -10,6 +10,7 @@ import { Suspense } from 'react'
 import { Fog } from 'three'
 
 import Outside from '../components/experience/Outside'
+import Test from '../components/experience/Test'
 
 export default function Home() {
     return (
@@ -30,11 +31,13 @@ export default function Home() {
                 <Canvas
                     onCreated={(state) => {
                         state.gl.setClearColor('#192933')
-                        state.scene.fog = new Fog('#a282b0', 1, 25)
+                        // state.scene.fog = new Fog('#a282b0', 1, 25)
                     }}
+                    camera={{fov: 25, position: [0, -25, 0]}}
                 >
                     <Suspense fallback={null}>
-                        <Outside />
+                        {/* <Outside /> */}
+                        <Test />
                     </Suspense>
                 </Canvas>
             </m.main>
