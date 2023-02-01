@@ -31,9 +31,9 @@ export default function Home() {
                 <Canvas
                     onCreated={(state) => {
                         state.gl.setClearColor('#192933')
-                        // state.scene.fog = new Fog('#a282b0', 1, 25)
+                        state.scene.fog = new Fog('#192933', 1, 30)
                     }}
-                    camera={{fov: 25, position: [0, -25, 0]}}
+                    camera={{fov: 25, position: [0, 1, 15], rotation: [0, 25, 0]}}
                 >
                     <Suspense fallback={null}>
                         {/* <Outside /> */}
