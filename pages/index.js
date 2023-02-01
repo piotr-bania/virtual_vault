@@ -29,9 +29,10 @@ export default function Home() {
                 transition={{duration: 1.25, ease: 'easeOut', delay: 0.25}}
             >
                 <Canvas
+                    shadows 
                     onCreated={(state) => {
                         state.gl.setClearColor('#192933')
-                        state.scene.fog = new Fog('#192933', 1, 30)
+                        state.scene.fog = new Fog('#192933', 1, 20)
                     }}
                     camera={{fov: 25, position: [0, 1, 15], rotation: [0, 25, 0]}}
                 >
